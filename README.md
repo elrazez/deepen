@@ -133,8 +133,8 @@ per-agent steps below.
 
 | Agent | Install | Invoke |
 |---|---|---|
-| **claude.ai** (web, desktop, mobile, Cowork) | [Upload the zip](#claudeai) | `/deepen <task>` |
-| **Claude Code** | `~/.claude/skills/deepen/` ([cmd](#manual-install-any-agent)) | `/deepen <task>` |
+| **claude.ai** (web, desktop, mobile, Cowork) | [Ask Claude](#claudeai) or [upload the zip](#claudeai) | `/deepen <task>` |
+| **Claude Code** | [Ask Claude](#claudeai) or `~/.claude/skills/deepen/` ([cmd](#manual-install-any-agent)) | `/deepen <task>` |
 | **Claude API** | [`POST /v1/skills`](#claude-api) | `container.skills` |
 | **Hermes Agent** | `hermes skills install elrazez/deepen/skills/deepen` | `/deepen <task>` |
 | **Codex** (CLI, IDE, ChatGPT desktop) | `~/.agents/skills/deepen/` | `$deepen <task>` |
@@ -165,7 +165,25 @@ mkdir -p "$DEST/deepen" && curl -fsSL \
 To scope it to one repo, use the project folder instead (`.claude/skills/`, `.agents/skills/`, …) and commit it.
 
 <a id="claudeai"></a>
-### claude.ai
+### claude.ai and Claude Code
+
+**The easy way: let Claude install it.** Paste this into a claude.ai chat or a Claude Code session:
+
+```text
+Install the "deepen" Agent Skill from https://github.com/elrazez/deepen for me.
+Use skills/deepen/SKILL.md from that repo exactly as it is. Don't edit, rewrite or summarize it.
+- Claude Code: download it with curl (not a web-fetch tool, so the file stays byte-exact) from
+  https://raw.githubusercontent.com/elrazez/deepen/main/skills/deepen/SKILL.md
+  to ~/.claude/skills/deepen/SKILL.md (create the folder), then show me its first 8 lines.
+- claude.ai: in your sandbox run `git clone --depth 1 https://github.com/elrazez/deepen`,
+  package the skills/deepen folder as a skill file, and give it to me to save.
+Then tell me how to use it: /deepen <task>
+```
+
+- **Claude Code** asks before writing to `~/.claude/`, which it treats as a protected folder. Approve that one write. `/deepen` works right away, with no restart.
+- **claude.ai** needs **Settings → Capabilities → Code execution and file creation** turned on. The sandbox can reach `github.com` by default. Save the skill file Claude hands back. If your organization has network access off, use the zip below.
+
+**Or upload the zip yourself (claude.ai):**
 
 1. Download **[`deepen.zip`](https://github.com/elrazez/deepen/releases/latest/download/deepen.zip)**.
 2. Make sure **Settings → Capabilities → Code execution and file creation** is on.
