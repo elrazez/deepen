@@ -1,13 +1,6 @@
 <div align="center">
 
-```text
-     _
-  __| |   ___    ___   _ __     ___   _ __
- / _` |  / _ \  / _ \ | '_ \   / _ \ | '_ \
-| (_| | |  __/ |  __/ | |_) | |  __/ | | | |
- \__,_|  \___|  \___| | .__/   \___| |_| |_|
-                      |_|
-```
+<img src="assets/banner.svg" width="100%" alt="deepen: four axes of ambition (altitude, range, speed, depth). Below the task's layer, four narrower, more detailed planes mark the four questions, and the depth axis lands on the word deepen. On the right, the 12-line prompt you get back.">
 
 **Your lazy prompt, rewritten the way a senior pro would have asked for it.**
 *Prompt in, deeper prompt out. No work starts until you say go.*
@@ -28,6 +21,9 @@
 you   > /deepen make our landing page load faster on mobile
 agent > (reads a few real sources, answers 4 questions, hands back a ≤12-line prompt, stops)
 ```
+
+> [!NOTE]
+> **Where the idea comes from:** Felix Rieseberg's [*How to be more ambitious: A tutorial for humans with models*](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/). Felix works on Claude at Anthropic. He splits ambition with models into speed, altitude, depth and range. Depth means "considering a task the way a field-leading expert would": one level below the task's layer, down to the underlying data, tools and problems. His depth section closes with a four-question prompt. `deepen` packages that prompt as a skill you can call with one command.
 
 ## TL;DR
 
@@ -319,7 +315,9 @@ answers point at *your* data instead of the general case.
 .
 ├── skills/deepen/SKILL.md   the whole skill
 ├── examples/                real, unedited runs
+├── assets/banner.svg        the header image
 ├── scripts/package.py       builds dist/deepen.zip (stdlib only, reproducible)
+├── scripts/banner.py        draws assets/banner.svg (stdlib only)
 └── LICENSE                  MIT
 ```
 
